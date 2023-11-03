@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tb_guru_mapel', function (Blueprint $table) {
-            $table->string('kode_pegawai')->references('kode_pegawai')->on('tb_pegawai')->onDelete('restrict');
+            $table->string('kode_pegawai', 100)->index()->references('kode_pegawai')->on('tb_pegawai')->onDelete('restrict');
         });
     }
 

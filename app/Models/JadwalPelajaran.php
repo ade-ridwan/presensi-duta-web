@@ -15,7 +15,5 @@ class JadwalPelajaran extends Model
         'tahun_ajaran',
         'id_waktu_pelajaran',
         'id_ruang'
-
-
     ];
 }
