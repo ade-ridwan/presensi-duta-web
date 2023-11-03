@@ -13,7 +13,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd starter-kit
+  cd prsensi-duta-web
 ```
 
 Install dependencies Composer
