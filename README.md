@@ -40,7 +40,7 @@ Setting Enviroment (.env)
   DB_CONNECTION=mysql
   DB_HOST=127.0.0.1
   DB_PORT=3306
-  DB_DATABASE=starter_kit
+  DB_DATABASE=db_presensi_duta
   DB_USERNAME=root
   DB_PASSWORD=
 ```
