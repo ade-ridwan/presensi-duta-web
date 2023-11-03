@@ -16,3 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', function () {
+    return view('admin.pages.auth.login');
+});
+
+Route::get('/register', function () {
+    return view('admin.pages.auth.register');
+});
+
+Route::prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin.pages.dashboard.index');
+        })->name('dashboard');
+    });
