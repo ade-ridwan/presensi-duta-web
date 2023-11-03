@@ -84,34 +84,47 @@
               <h4 class="mb-2">Selamat Datang di Halaman Login👋</h4>
               <p class="mb-4">Silahkan Login</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="formAuthentication" class="mb-3" action="{{ route('login.authenticate') }}" method="POST">
+                @csrf
                 <div class="mb-3">
-                  <label for="email" class="form-label">Nama Pengguna</label>
+                  <label for="email" class="form-label">Email</label>
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control @error('email')
+                        is-invalid
+                    @enderror"
                     id="email"
-                    name="email-username"
+                    name="email"
                     placeholder="Masukan Pengguna"
                     autofocus
                   />
+                    @error('email')
+    <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+@enderror
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
                     </a>
                   </div>
-                  <div class="input-group input-group-merge">
+                  <div class="input-group input-group-merge  @error('password') is-invalid @enderror">
                     <input
                       type="password"
                       id="password"
-                      class="form-control"
                       name="password"
+                      class="form-control"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
+                              @error('password')
+    <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+@enderror
                 </div>
                 <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Masuk</button>
@@ -120,19 +133,15 @@
                     <small>&copy; TIM PPLG SMK PGRI 2 TAMAN</small>
                 </div>
               </form>
-
-
-                </a>
-              </p>
             </div>
           </div>
-          <!-- /Register -->
         </div>
       </div>
     </div>
 
     <!-- / Content -->
 
+  </body>
 
 
     <!-- Core JS -->

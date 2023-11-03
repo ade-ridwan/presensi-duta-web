@@ -79,7 +79,8 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
+                        <form id="logout" action="{{ route('logout') }}" method="post">@csrf</form>
+                        <a onclick="document.querySelector('#logout').submit()" class="dropdown-item">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
