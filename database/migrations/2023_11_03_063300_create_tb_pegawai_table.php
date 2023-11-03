@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tb_pegawai', function (Blueprint $table) {
             $table->string('kode_pegawai',100)->primary();
-            $table->integer('nik');
-            $table->integer('nuptk');
+            $table->string('nik',20);
+            $table->string('nuptk',50);
             $table->string('nama',250);
             $table->string('jk',100);
             $table->string('jenis_ptk',200);
