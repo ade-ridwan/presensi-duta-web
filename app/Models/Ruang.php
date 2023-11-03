@@ -10,4 +10,8 @@ class Ruang extends Model
     use HasFactory;
 
     protected $table = "tb_ruang";
+    protected $fillable = [
+        'nama',
+        'tahun_ajaran',
+    ];
 }

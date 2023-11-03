@@ -10,6 +10,13 @@ class WaktuPelajaran extends Model
     use HasFactory;
 
     protected $table = "tb_waktu_pelajaran";
+    protected $fillable = [
+        'nama',
+        'jam_masuk',
+        'jam_keluar',
+        'kode_hari',
+        'nama_hari',
+    ];
 
 
 }

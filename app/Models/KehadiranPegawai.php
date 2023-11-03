@@ -10,5 +10,13 @@ class KehadiranPegawai extends Model
     use HasFactory;
 
     protected $table = "tb_kehadiran_pegawai";
+    protected $fillable = [
+        'kode_pegawai',
+        'tgl_absen',
+        'jam_masuk',
+        'jam_keluar',
+        'keterangan',
+        'tahun_ajaran'
+    ];
 
 }

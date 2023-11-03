@@ -10,4 +10,8 @@ class GuruMapel extends Model
     use HasFactory;
 
     protected $table = "tb_guru_mapel";
+    protected $fillable = [
+        'id_mapel',
+        'tahun_ajaran'
+    ];
 }

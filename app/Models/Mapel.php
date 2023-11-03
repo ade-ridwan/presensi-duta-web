@@ -10,5 +10,8 @@ class Mapel extends Model
     use HasFactory;
 
     protected $table = "tb_mapel";
+    protected $fillable = [
+        'nama',
+    ];
 
 }

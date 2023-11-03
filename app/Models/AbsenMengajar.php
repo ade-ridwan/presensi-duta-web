@@ -10,4 +10,14 @@ class AbsenMengajar extends Model
     use HasFactory;
 
     protected $table = "tb_absensi_mengajar";
+    protected $fillable = [
+        'kode_pegawai',
+        'id_jadwal_pelajaran',
+        'id_ruang',
+        'id_guru_piket',
+        'tgl',
+        'jam_masuk',
+        'jam_keluar',
+        'tahun_ajaran'
+    ];
 }

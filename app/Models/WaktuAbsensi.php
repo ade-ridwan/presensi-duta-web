@@ -11,6 +11,12 @@ class WaktuAbsensi extends Model
 
 
     protected $table = "tb_waktu_absensi";
+    protected $fillable = [
+        'status',
+        'shift',
+        'jam_masuk',
+        'jam_keluar'
+    ];
 
 
 }
