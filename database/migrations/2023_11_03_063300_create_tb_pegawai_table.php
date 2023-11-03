@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_pegawai', function (Blueprint $table) {
-            $table->string('kode_pegawai',100);
+            $table->string('kode_pegawai',100)->primary();
             $table->integer('nik');
             $table->integer('nuptk');
             $table->string('nama',250);
