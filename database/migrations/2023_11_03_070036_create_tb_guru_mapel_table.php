@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('tb_guru_mapel', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->foreignId('id_role')->references('id')->on('tb_role')->onDelete('restrict');
-            $table->rememberToken();
+            $table->foreignId('id_mapel')->references('id')->on('tb_mapel')->onDelete('restrict');
+            $table->foreignId('kode_pegawai')->references('kode_pegawai')->on('tb_pegawai')->onDelete('restrict');
+            $table->integer('tahun_ajaran');
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tb_guru_mapel');
     }
 };
