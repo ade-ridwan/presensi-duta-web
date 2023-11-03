@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_absen_mengajar', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kode_pegawai')->references('kode_pegawai')->on('tb_pegawai')->onDelete('restrict');
+            $table->string('kode_pegawai')->references('kode_pegawai')->on('tb_pegawai')->onDelete('restrict');
             $table->foreignId('id_jadwal_pelajaran')->references('id')->on('tb_jadwal_pelajaran')->onDelete('restrict');
             $table->foreignId('id_ruang')->references('id')->on('tb_ruang')->onDelete('restrict');
             $table->foreignId('id_guru_piket')->references('id')->on('tb_guru_piket')->onDelete('restrict');

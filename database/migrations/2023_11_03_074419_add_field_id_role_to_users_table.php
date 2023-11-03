@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_guru_mapel', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_mapel')->references('id')->on('tb_mapel')->onDelete('restrict');
-            $table->integer('tahun_ajaran');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('id_role')->references('id')->on('tb_role')->onDelete('restrict');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_guru_mapel');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

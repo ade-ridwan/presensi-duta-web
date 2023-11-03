@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_kehadiran_pegawai', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kode_pegawai')->references('kode_pegawai')->on('tb_pegawai')->onDelete('restrict');
+            $table->string('kode_pegawai')->references('kode_pegawai')->on('tb_pegawai')->onDelete('restrict');
             $table->date('tgl_absen');
             $table->time('jam_masuk');
             $table->time('jam_keluar');
