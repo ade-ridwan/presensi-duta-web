@@ -74,10 +74,10 @@
               <!-- Logo -->
               <div class="app-brand justify-content-center">
                 <a href="index.html" class="app-brand-link gap-2">
-                  <span class="app-brand-logo demo">
+                  <span class="app-brand-logo d-flex align-items-center">
                     <img src="{{ asset('template/assets/img/favicon/favicon.ico') }}" alt="" width="48px">
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">SMK PGRI 2 TAMAN</span>
+                  <span class="app-brand-text mt-3 h3 text-body fw-bolder">SMK PGRI 2 TAMAN</span>
                 </a>
               </div>
               <!-- /Logo -->
