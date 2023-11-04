@@ -13,5 +13,9 @@ class Mapel extends Model
     protected $fillable = [
         'nama',
     ];
+    public function scopeSearch($query, $keyword)
+    {
+        $query->where('nama', 'like', '%' . $keyword . '%');
+    }
 
 }

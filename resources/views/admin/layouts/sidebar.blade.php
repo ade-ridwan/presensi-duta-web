@@ -36,6 +36,11 @@
                          <div>Data Ruang</div>
                      </a>
                  </li>
+                 <li class="menu-item {{ request()->routeIs('admin.mapel.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.mapel.index') }}" class="menu-link">
+                        <div>Data Mapel</div>
+                    </a>
+                </li>
              </ul>
          </li>
 

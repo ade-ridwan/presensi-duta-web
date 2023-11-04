@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MapelController;
 use App\Http\Controllers\Admin\RuanganController;
 use App\Http\Controllers\Admin\RuangController;
 use App\Http\Controllers\AuthController;
@@ -32,6 +33,7 @@ Route::prefix('admin')
     ->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/ruang', RuangController::class);
+        Route::resource('/mapel', MapelController::class);
     });
 
 
