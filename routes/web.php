@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\MapelController;
 use App\Http\Controllers\Admin\RuanganController;
 use App\Http\Controllers\Admin\RuangController;
 use App\Http\Controllers\Admin\WaktuAbsensiController;
+use App\Http\Controllers\Admin\waktu_pelajaranController;
+use App\Http\Controllers\Admin\WaktuPelajaranController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +39,7 @@ Route::prefix('admin')
         Route::resource('/ruang', RuangController::class);
         Route::resource('/mapel', MapelController::class);
         Route::resource('/waktu_absensi', WaktuAbsensiController::class);
+        Route::resource('/waktu_pelajaran', WaktuPelajaranController::class);
     });
 
 
