@@ -18,5 +18,11 @@ class WaktuAbsensi extends Model
         'jam_keluar'
     ];
 
+    public function scopeSearch($query, $keyword)
+    {
+        $query->where('status', 'like', '%' . $keyword . '%');
+        $query->orWhere('shift', 'like', '%' . $keyword . '%');
+    }
+
 
 }
