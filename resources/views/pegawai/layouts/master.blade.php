@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+* Sneat - Bootstrap 5 HTML pegawai Template - Pro | v1.0.0
 ==============================================================
 
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-pegawai-template/
 * Created by: ThemeSelection
 * License: You must have a valid license purchased in order to legally use the theme for your project.
 * Copyright ThemeSelection (https://themeselection.com)
@@ -25,7 +25,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Admin</title>
+    <title>pegawai</title>
 
     <meta name="description" content="" />
 
@@ -66,14 +66,14 @@
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
-       @include('admin.layouts.sidebar')
+       @include('pegawai.layouts.sidebar')
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
 
-          @include('admin.layouts.navbar')
+          @include('pegawai.layouts.navbar')
 
           <!-- / Navbar -->
 
@@ -100,14 +100,14 @@
                   <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
 
                   <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    href="https://themeselection.com/demo/sneat-bootstrap-html-pegawai-template/documentation/"
                     target="_blank"
                     class="footer-link me-4"
                     >Documentation</a
                   >
 
                   <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    href="https://github.com/themeselection/sneat-html-pegawai-template-free/issues"
                     target="_blank"
                     class="footer-link me-4"
                     >Support</a

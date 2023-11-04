@@ -27,6 +27,10 @@ class AuthController extends Controller
         if (auth()->user()->id_role == 1) {
             return redirect()->intended('/admin/dashboard');
         }
+
+        if (auth()->user()->id_role == 2) {
+            return redirect()->intended('/pegawai/dashboard');
+        }
     }
 
     public function logout()

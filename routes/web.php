@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\RuanganController;
+use App\Http\Controllers\Admin\RuangController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,9 +28,18 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 
 Route::prefix('admin')
     ->name('admin.')
-    ->middleware(['auth'])
+    ->middleware(['auth', 'role:admin'])
+    ->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('/ruang', RuangController::class);
+    });
+
+
+Route::prefix('pegawai')
+    ->name('pegawai.')
+    ->middleware(['auth', 'role:pegawai'])
     ->group(function () {
         Route::get('/dashboard', function () {
-            return view('admin.pages.dashboard.index');
+            return view('pegawai.pages.dashboard.index');
         })->name('dashboard');
     });

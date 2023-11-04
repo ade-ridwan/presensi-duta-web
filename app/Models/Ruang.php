@@ -14,4 +14,9 @@ class Ruang extends Model
         'nama',
         'tahun_ajaran',
     ];
+
+    public function scopeSearch($query, $keyword)
+    {
+        $query->where('nama', 'like', '%' . $keyword . '%');
+    }
 }
