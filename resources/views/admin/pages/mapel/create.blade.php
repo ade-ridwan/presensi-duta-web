@@ -3,7 +3,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
             <div class="card-body">
-                <h3>Tambah mapel</h3>
+                <h3>Tambah Mata Pelajaran</h3>
 
                 <form action="{{ route('admin.mapel.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf

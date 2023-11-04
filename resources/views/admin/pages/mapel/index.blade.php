@@ -3,7 +3,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
             <div class="card-body">
-                <h3>Data Mapel</h3>
+                <h3>Data Mata Pelajaran</h3>
 
                 @if ($message = session('success'))
                     <div class="alert alert-success my-4">
@@ -32,8 +32,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">mapel</th>
-                                <th scope="col">Tahun Ajaran</th>
+                                <th scope="col">Mata Pelajaran</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -42,7 +41,6 @@
                                 <tr>
                                     <th scope="row">{{ $mapel->firstItem() + $key }}</th>
                                     <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->tahun_ajaran }}</td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"
                                             action="{{ route('admin.mapel.destroy', $item->id) }}" method="post">
