@@ -36,6 +36,11 @@
                          <div>Data Ruang</div>
                      </a>
                  </li>
+                 <li class="menu-item {{ request()->routeIs('admin.waktu_pelajaran.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.waktu_pelajaran.index') }}" class="menu-link">
+                        <div>Data Waktu Pelajaran</div>
+                    </a>
+                </li>
              </ul>
          </li>
 

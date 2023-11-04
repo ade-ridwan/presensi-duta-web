@@ -17,6 +17,9 @@ class WaktuPelajaran extends Model
         'kode_hari',
         'nama_hari',
     ];
-
+    public function scopeSearch($query, $keyword)
+    {
+        $query->where('nama', 'like', '%' . $keyword . '%');
+    }
 
 }
