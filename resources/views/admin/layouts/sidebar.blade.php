@@ -36,7 +36,13 @@
                          <div>Data Ruang</div>
                      </a>
                  </li>
-             </ul>
+
+                <li class="menu-item {{ request()->routeIs('admin.waktu_absensi.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.waktu_absensi.index') }}" class="menu-link">
+                        <div>Data Waktu Absensi</div>
+                    </a>
+                </li>
+            </ul>
          </li>
 
          <li class="menu-header small text-uppercase">
