@@ -30,7 +30,7 @@
 
                     <div class="mb-3">
                         <label for="jam_masuk" class="form-label">Jam Masuk</label>
-                        <input name="jam_masuk" placeholder="Masukkan disini" type="text"
+                        <input name="jam_masuk" placeholder="Masukkan disini" type="time"
                             class="form-control @error('jam_masuk') is-invalid @enderror" id="jam_masuk"
                             value="{{ $waktu_absensi->jam_masuk }}">
                         @error('jam_masuk')
@@ -40,7 +40,7 @@
 
                     <div class="mb-3">
                         <label for="jam_keluar" class="form-label">Jam Keluar</label>
-                        <input name="jam_keluar" placeholder="Masukkan disini" type="text"
+                        <input name="jam_keluar" placeholder="Masukkan disini" type="time"
                             class="form-control @error('jam_keluar') is-invalid @enderror" id="jam_keluar"
                             value="{{ $waktu_absensi->jam_keluar }}">
                         @error('jam_keluar')
