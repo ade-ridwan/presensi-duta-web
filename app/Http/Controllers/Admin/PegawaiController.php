@@ -33,7 +33,14 @@ class PegawaiController extends Controller
                 'id_user' => 'required',
             ],
             [
-                'nama.required' => 'Nama wajib diisi'
+                'kode_pegawai.required' => 'Kode Pegawai wajib diisi',
+                'nik.required' => 'NIK wajib diisi',
+                'nuptk.required' => 'NUPTK wajib diisi',
+                'nama.required' => 'Nama wajib diisi',
+                'jk.required' => 'Jenis Kelamin wajib diisi',
+                'jenis_ptk.required' => 'Jenis PTK wajib diisi',
+                'status_pegawai.required' => 'Status Pegawai wajib diisi',
+                'id_user.required' => 'Kode Pegawai wajib diisi'
             ]
         );
 
@@ -52,22 +59,36 @@ class PegawaiController extends Controller
     {
         $validated = $request->validate(
             [
+                'kode_pegawai' => 'required',
+                'nik' => 'required',
+                'nuptk' => 'required',
                 'nama' => 'required',
+                'jk' => 'required',
+                'jenis_ptk' => 'required',
+                'status_pegawai' => 'required',
+                'id_user' => 'required',
             ],
             [
-                'nama.required' => 'Nama wajib diisi'
+                'kode_pegawai.required' => 'Kode Pegawai wajib diisi',
+                'nik.required' => 'NIK wajib diisi',
+                'nuptk.required' => 'NUPTK wajib diisi',
+                'nama.required' => 'Nama wajib diisi',
+                'jk.required' => 'Jenis Kelamin wajib diisi',
+                'jenis_ptk.required' => 'Jenis PTK wajib diisi',
+                'status_pegawai.required' => 'Status Pegawai wajib diisi',
+                'id_user.required' => 'Kode Pegawai wajib diisi'
             ]
         );
 
         pegawai::find($id)->update($validated); // update data ke database
 
-        return redirect()->route('admin.pegawai.index')->with('success', 'pegawai berhasil diperbarui');
+        return redirect()->route('admin.pegawai.index')->with('success', 'Data Pegawai berhasil diperbarui');
     }
 
     public function destroy($id)
     {
         $pegawai = pegawai::find($id);
         $pegawai->delete();
-        return redirect()->route('admin.pegawai.index')->with('success', 'pegawai berhasil dihapus');
+        return redirect()->route('admin.pegawai.index')->with('success', 'Data Pegawai berhasil dihapus');
     }
 }
