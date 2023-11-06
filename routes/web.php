@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MapelController;
 use App\Http\Controllers\Admin\RuanganController;
 use App\Http\Controllers\Admin\RuangController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WaktuAbsensiController;
 use App\Http\Controllers\Admin\waktu_pelajaranController;
 use App\Http\Controllers\Admin\WaktuPelajaranController;
@@ -42,6 +43,7 @@ Route::prefix('admin')
         Route::resource('/waktu_absensi', WaktuAbsensiController::class);
         Route::resource('/waktu_pelajaran', WaktuPelajaranController::class);
         Route::resource('/pegawai', PegawaiController::class);
+        Route::resource('/user', UserController::class);
     });
 
 
