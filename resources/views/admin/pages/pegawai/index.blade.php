@@ -3,7 +3,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
             <div class="card-body">
-                <h3>Data Mata Pelajaran</h3>
+                <h3>Data Pegawai</h3>
 
                 @if ($message = session('success'))
                     <div class="alert alert-success my-4">
@@ -13,7 +13,7 @@
                 <form action="" method="GET">
                     <div class="mb-3 d-flex gap-3 justify-content-between">
                         <div>
-                            <a href="{{ route('admin.mapel.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                            <a href="{{ route('admin.pegawai.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                         </div>
                         <div>
                             <div class="input-group input-group-sm">
@@ -31,22 +31,34 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Mata Pelajaran</th>
+                                <th scope="col">Kode Pegawai</th>
+                                <th scope="col">NIK</th>
+                                <th scope="col">NUPTK</th>
+                                <th scope="col">Nama Pegawai</th>
+                                <th scope="col">Jenis Kelamin</th>
+                                <th scope="col">Jenis PTK</th>
+                                <th scope="col">Status Pegawai</th>
+                                <th scope="col">Status User</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($mapel as $key => $item)
+                            @forelse ($pegawai as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $mapel->firstItem() + $key }}</th>
+                                    <th scope="row">{{ $item->kode_pegawai }}</th>
+                                    <td>{{ $item->nik }}</td>
+                                    <td>{{ $item->nuptk }}</td>
                                     <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->jk }}</td>
+                                    <td>{{ $item->jenis_ptk }}</td>
+                                    <td>{{ $item->status_pegawai }}</td>
+                                    <td>{{ $item->user->name }}</td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"
-                                            action="{{ route('admin.mapel.destroy', $item->id) }}" method="post">
+                                            action="{{ route('admin.pegawai.destroy', $item->kode_pegawai) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{ route('admin.mapel.edit', $item->id) }}"
+                                            <a href="{{ route('admin.pegawai.edit', $item->kode_pegawai) }}"
                                                 class="btn btn-sm btn-primary">
                                                 Edit</a>
                                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
@@ -62,7 +74,7 @@
                     </table>
                 </div>
                 <div class="mt-3">
-                    {{ $mapel->links() }}
+                    {{ $pegawai->links() }}
                 </div>
             </div>
         </div>

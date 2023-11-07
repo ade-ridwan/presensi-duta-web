@@ -58,6 +58,12 @@
                          <div>Data User</div>
                      </a>
                  </li>
+
+                 <li class="menu-item {{ request()->routeIs('admin.pegawai.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.pegawai.index') }}" class="menu-link">
+                        <div>Data Pegawai</div>
+                    </a>
+                </li>
              </ul>
          </li>
 

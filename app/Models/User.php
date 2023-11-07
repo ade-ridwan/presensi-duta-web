@@ -59,6 +59,10 @@ class User extends Authenticatable
         return $this->hasOne(GuruPiket::class, 'id_user');
     }
 
+    public function pegawai(){
+        return $this->hasOne(Pegawai::class, 'id_user');
+    }
+
     public function scopeSearch($query, $keyword)
     {
         $query->where('name', 'like', '%' . $keyword . '%');

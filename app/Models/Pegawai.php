@@ -21,4 +21,17 @@ class Pegawai extends Model
         'id_user',
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function scopeSearch($query, $keyword)
+    {
+        $query->where('nik', 'like', '%' . $keyword . '%');
+        $query->where('nuptk', 'like', '%' . $keyword . '%');
+        $query->where('nama', 'like', '%' . $keyword . '%');
+        $query->where('status_pegawai', 'like', '%' . $keyword . '%');
+        $query->where('jenis_ptk', 'like', '%' . $keyword . '%');
+    }
+
 }

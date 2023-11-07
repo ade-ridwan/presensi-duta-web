@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pegawai;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
@@ -16,7 +17,8 @@ class PegawaiController extends Controller
 
     public function create()
     {
-        return view('admin.pages.pegawai.create');
+        $user = User::get();
+        return view('admin.pages.pegawai.create', compact('user'));
     }
 
     public function store(Request $request)
@@ -49,13 +51,13 @@ class PegawaiController extends Controller
         return redirect()->route('admin.pegawai.index')->with('success', 'Data Pegawai berhasil ditambahkan');
     }
 
-    public function edit($id)
+    public function edit($kode_pegawai)
     {
-        $pegawai = Pegawai::find($id);
-        return view('admin.pages.pegawai.edit', compact('pegawai'));
+        $pegawai = Pegawai::find($kode_pegawai);
+        return view('admin.pages.pegawai.edit', compact('pegawai', 'user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $kode_pegawai)
     {
         $validated = $request->validate(
             [
@@ -80,14 +82,14 @@ class PegawaiController extends Controller
             ]
         );
 
-        pegawai::find($id)->update($validated); // update data ke database
+        pegawai::find($kode_pegawai)->update($validated); // update data ke database
 
         return redirect()->route('admin.pegawai.index')->with('success', 'Data Pegawai berhasil diperbarui');
     }
 
-    public function destroy($id)
+    public function destroy($kode_pegawai)
     {
-        $pegawai = pegawai::find($id);
+        $pegawai = pegawai::find($kode_pegawai);
         $pegawai->delete();
         return redirect()->route('admin.pegawai.index')->with('success', 'Data Pegawai berhasil dihapus');
     }
