@@ -25,14 +25,14 @@ class PegawaiController extends Controller
     {
         $validated = $request->validate(
             [
-                'kode_pegawai' => 'required',
-                'nik' => 'required',
+                'kode_pegawai' => 'required|unique:tb_pegawai,kode_pegawai',
+                'nik' => 'required|unique:tb_pegawai,nik',
                 'nuptk' => 'nullable',
                 'nama' => 'required',
                 'jk' => 'required',
                 'jenis_ptk' => 'required',
                 'status_pegawai' => 'required',
-                'email' => 'required',
+                'email' => 'required|unique:users,email',
                 'password' => 'required'
             ],
             [
@@ -73,8 +73,8 @@ class PegawaiController extends Controller
     {
         $validated = $request->validate(
             [
-                'kode_pegawai' => 'required',
-                'nik' => 'required',
+                'kode_pegawai' => 'required|unique:tb_pegawai,kode_pegawai,'.$kode_pegawai.',kode_pegawai',
+                'nik' => 'required|unique:tb_pegawai,nik,'.$kode_pegawai.',kode_pegawai',
                 'nuptk' => 'nullable',
                 'nama' => 'required',
                 'jk' => 'required',
@@ -85,7 +85,6 @@ class PegawaiController extends Controller
             [
                 'kode_pegawai.required' => 'Kode Pegawai wajib diisi',
                 'nik.required' => 'NIK wajib diisi',
-                'nuptk.required' => 'NUPTK wajib diisi',
                 'nama.required' => 'Nama wajib diisi',
                 'jk.required' => 'Jenis Kelamin wajib diisi',
                 'jenis_ptk.required' => 'Jenis PTK wajib diisi',

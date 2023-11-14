@@ -38,7 +38,6 @@
                                 <th scope="col">Jenis Kelamin</th>
                                 <th scope="col">Jenis PTK</th>
                                 <th scope="col">Status Pegawai</th>
-                                <th scope="col">Status User</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -49,10 +48,27 @@
                                     <td>{{ $item->nik }}</td>
                                     <td>{{ $item->nuptk }}</td>
                                     <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->jk }}</td>
-                                    <td>{{ $item->jenis_ptk }}</td>
-                                    <td>{{ $item->status_pegawai }}</td>
-                                    <td>{{ $item->user->name }}</td>
+                                    <td>@if ($item->jk=='L')Laki-laki
+                                        @endif
+                                        @if ($item->jk=='P')Perempuan
+                                        @endif
+                                    </td>
+                                    <td>@if ($item->jenis_ptk=='ks')Kepala Sekolah
+                                        @endif
+                                        @if ($item->jenis_ptk=='gr')Guru
+                                        @endif
+                                        @if ($item->jenis_ptk=='tu')Tenaga Tata Usaha
+                                        @endif
+                                        @if ($item->jenis_ptk=='st')Petugas Keamanan
+                                        @endif
+                                    </td>
+                                    <td>@if ($item->status_pegawai=='gty')GTY/PTY
+                                        @endif
+                                        @if ($item->status_pegawai=='gh')Guru Honorer Sekolah
+                                        @endif
+                                        @if ($item->status_pegawai=='th')Tenaga Honorer Sekolah
+                                        @endif
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"
                                             action="{{ route('admin.pegawai.destroy', $item->kode_pegawai) }}" method="post">
