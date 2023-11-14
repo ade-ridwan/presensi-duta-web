@@ -10,6 +10,8 @@ class Pegawai extends Model
     use HasFactory;
 
     protected $table = "tb_pegawai";
+    protected $primaryKey = "kode_pegawai";
+    public $incrementing = false;
     protected $fillable = [
         'kode_pegawai',
         'nik',
@@ -21,4 +23,17 @@ class Pegawai extends Model
         'id_user',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function scopeSearch($query, $keyword)
+    {
+        $query->where('nik', 'like', '%' . $keyword . '%');
+        $query->orWhere('nuptk', 'like', '%' . $keyword . '%');
+        $query->orWhere('nama', 'like', '%' . $keyword . '%');
+        $query->orWhere('status_pegawai', 'like', '%' . $keyword . '%');
+        $query->orWhere('jenis_ptk', 'like', '%' . $keyword . '%');
+    }
 }

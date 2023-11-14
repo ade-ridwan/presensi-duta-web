@@ -48,4 +48,23 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class, 'id_role');
     }
+
+    public function roles()
+    {
+        return $this->belongsTo(Role::class, 'id_role');
+    }
+
+    public function piket()
+    {
+        return $this->hasOne(GuruPiket::class, 'id_user');
+    }
+
+    public function pegawai(){
+        return $this->hasOne(Pegawai::class, 'id_user');
+    }
+
+    public function scopeSearch($query, $keyword)
+    {
+        $query->where('name', 'like', '%' . $keyword . '%');
+    }
 }

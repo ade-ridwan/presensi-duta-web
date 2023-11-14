@@ -25,7 +25,7 @@
 
          <!-- Layouts -->
          <li
-             class="menu-item {{ request()->routeIs(['admin.ruang.*', 'admin.mapel.*', 'admin.waktu_absensi.*', 'admin.waktu_pelajaran.*']) ? 'active open' : '' }}">
+             class="menu-item {{ request()->routeIs(['admin.ruang.*', 'admin.mapel.*', 'admin.waktu_absensi.*', 'admin.waktu_pelajaran.*', 'admin.user.*']) ? 'active open' : '' }}">
              <a href="javascript:void(0);" class="menu-link menu-toggle">
                  <i class="menu-icon tf-icons bx bx-layout"></i>
                  <div data-i18n="Layouts">Data Master</div>
@@ -52,6 +52,18 @@
                          <div>Data Waktu Pelajaran</div>
                      </a>
                  </li>
+
+                 <li class="menu-item {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
+                     <a href="{{ route('admin.user.index') }}" class="menu-link">
+                         <div>Data User</div>
+                     </a>
+                 </li>
+
+                 <li class="menu-item {{ request()->routeIs('admin.pegawai.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.pegawai.index') }}" class="menu-link">
+                        <div>Data Pegawai</div>
+                    </a>
+                </li>
              </ul>
          </li>
 
