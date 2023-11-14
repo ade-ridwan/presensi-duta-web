@@ -27,26 +27,37 @@ class PegawaiController extends Controller
             [
                 'kode_pegawai' => 'required',
                 'nik' => 'required',
-                'nuptk' => 'required',
+                'nuptk' => 'nullable',
                 'nama' => 'required',
                 'jk' => 'required',
                 'jenis_ptk' => 'required',
                 'status_pegawai' => 'required',
-                'id_user' => 'required',
+                'email' => 'required',
+                'password' => 'required'
             ],
             [
                 'kode_pegawai.required' => 'Kode Pegawai wajib diisi',
                 'nik.required' => 'NIK wajib diisi',
-                'nuptk.required' => 'NUPTK wajib diisi',
                 'nama.required' => 'Nama wajib diisi',
                 'jk.required' => 'Jenis Kelamin wajib diisi',
                 'jenis_ptk.required' => 'Jenis PTK wajib diisi',
                 'status_pegawai.required' => 'Status Pegawai wajib diisi',
-                'id_user.required' => 'Kode Pegawai wajib diisi'
+                'email.required' => 'Email Pegawai wajib diisi',
+                'password.required' => 'Password Pegawai wajib diisi',
             ]
         );
 
-        pegawai::create($validated); // insert data ke database
+        $newUser = User::create([
+            'name' => $validated['nama'],
+            'email' => $validated['email'],
+            'password' => bcrypt($request->password),
+            'id_role' => 2,
+        ]); // insert data ke tabel users
+
+        if ($newUser) {
+            $validated['id_user'] = $newUser->id;
+            Pegawai::create($validated); // insert data ke tabel tbl_pegawai
+        }
 
         return redirect()->route('admin.pegawai.index')->with('success', 'Data Pegawai berhasil ditambahkan');
     }
@@ -54,6 +65,7 @@ class PegawaiController extends Controller
     public function edit($kode_pegawai)
     {
         $pegawai = Pegawai::find($kode_pegawai);
+        $user = User::find($pegawai->id_user);
         return view('admin.pages.pegawai.edit', compact('pegawai', 'user'));
     }
 
@@ -63,12 +75,12 @@ class PegawaiController extends Controller
             [
                 'kode_pegawai' => 'required',
                 'nik' => 'required',
-                'nuptk' => 'required',
+                'nuptk' => 'nullable',
                 'nama' => 'required',
                 'jk' => 'required',
                 'jenis_ptk' => 'required',
                 'status_pegawai' => 'required',
-                'id_user' => 'required',
+                'email' => 'required',
             ],
             [
                 'kode_pegawai.required' => 'Kode Pegawai wajib diisi',
@@ -78,19 +90,39 @@ class PegawaiController extends Controller
                 'jk.required' => 'Jenis Kelamin wajib diisi',
                 'jenis_ptk.required' => 'Jenis PTK wajib diisi',
                 'status_pegawai.required' => 'Status Pegawai wajib diisi',
-                'id_user.required' => 'Kode Pegawai wajib diisi'
+                'email.required' => 'Email Pegawai wajib diisi',
             ]
         );
 
-        pegawai::find($kode_pegawai)->update($validated); // update data ke database
+        $pegawai = pegawai::find($kode_pegawai);
+        $pegawai->update($validated); // update data ke database
+
+        if ($pegawai) {
+            $user_data = [
+                'name' => $validated['nama'],
+                'email' => $validated['email'],
+            ];
+
+            if ($request->password) {
+                $user_data['password'] = bcrypt($request->password);
+            }
+            $user = User::find($pegawai->id_user);
+            $user->update($user_data); // insert data ke tabel users
+        }
 
         return redirect()->route('admin.pegawai.index')->with('success', 'Data Pegawai berhasil diperbarui');
     }
 
     public function destroy($kode_pegawai)
     {
+        // mengambil data pegawai, harus mengahapus terlebih dahulu data child
         $pegawai = pegawai::find($kode_pegawai);
         $pegawai->delete();
+
+        // setelah bersih, bisa mengapus data parentnya
+        $user = User::find($pegawai->id_user);
+        $user->delete();
+
         return redirect()->route('admin.pegawai.index')->with('success', 'Data Pegawai berhasil dihapus');
     }
 }
