@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('hari',100);
             $table->integer('tahun_ajaran');
-            $table->string('kode_pegawai')->references('kode_pegawai')->on('tb_pegawai')->onDelete('restrict');
+            $table->string('kode_pegawai')->index()->references('kode_pegawai')->on('tb_pegawai')->onDelete('restrict');
             $table->foreignId('id_user')->references('id')->on('users')->onDelete('restrict');
             $table->timestamps();
         });

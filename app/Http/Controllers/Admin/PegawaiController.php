@@ -82,15 +82,6 @@ class PegawaiController extends Controller
                 'status_pegawai' => 'required',
                 'email' => 'required',
             ],
-            [
-                'kode_pegawai.required' => 'Kode Pegawai wajib diisi',
-                'nik.required' => 'NIK wajib diisi',
-                'nama.required' => 'Nama wajib diisi',
-                'jk.required' => 'Jenis Kelamin wajib diisi',
-                'jenis_ptk.required' => 'Jenis PTK wajib diisi',
-                'status_pegawai.required' => 'Status Pegawai wajib diisi',
-                'email.required' => 'Email Pegawai wajib diisi',
-            ]
         );
 
         $pegawai = pegawai::find($kode_pegawai);

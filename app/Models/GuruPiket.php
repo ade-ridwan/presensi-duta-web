@@ -16,4 +16,20 @@ class GuruPiket extends Model
         'kode_pegawai',
         'id_user'
     ];
+
+    public function pegawai()
+    {
+        return$this->belongsTo(Pegawai::class, 'kode_pegawai');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+
+    Public function scopeSearch($query, $keyword)
+    {
+        $query->where('hari', 'like', '%' . $keyword . '%');
+    }
 }

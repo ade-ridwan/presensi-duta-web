@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GuruPiketController;
 use App\Http\Controllers\Admin\MapelController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\RuangController;
@@ -42,6 +43,7 @@ Route::prefix('admin')
         Route::resource('/waktu_pelajaran', WaktuPelajaranController::class);
         Route::resource('/pegawai', PegawaiController::class);
         Route::resource('/user', UserController::class);
+        Route::resource('/guru_piket', GuruPiketController::class);
     });
 
 
