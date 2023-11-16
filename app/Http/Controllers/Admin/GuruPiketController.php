@@ -26,19 +26,20 @@ class GuruPiketController extends Controller
         $validated = $request->validate(
             [
                 'kode_pegawai' => 'required',
-                'hari' => 'required',
+                'kode_hari' => 'required',
                 'tahun_ajaran' => 'required',
             ],
             [
                 'kode_pegawai.required' => 'Nama wajib diisi',
-                'hari.required' => 'Hari wajib diisi',
+                'kode_hari.required' => 'Hari wajib diisi',
                 'tahun_ajaran.required' => 'Tahun Ajaran wajib diisi',
             ]
         );
 
         $pegawai= Pegawai::find($request->kode_pegawai);
         $validated['id_user']=$pegawai->id_user;
-        // insert data ke tabel users
+
+        GuruPiket::created($validated);
 
         return redirect()->route('admin.guru_piket.index')->with('success', 'Data Guru Piket berhasil ditambahkan');
     }
@@ -54,8 +55,8 @@ class GuruPiketController extends Controller
     {
         $validated = $request->validate(
             [
-                'nama' => 'required',
-                'hari' => 'required',
+                'kode_pegawai' => 'required',
+                'kode_hari' => 'required',
                 'tahun_ajaran' => 'required',
             ]
         );

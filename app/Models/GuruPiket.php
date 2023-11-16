@@ -11,7 +11,7 @@ class GuruPiket extends Model
 
     protected $table = "tb_guru_piket";
     protected $fillable = [
-        'hari',
+        'kode_hari',
         'tahun_ajaran',
         'kode_pegawai',
         'id_user'
@@ -30,6 +30,6 @@ class GuruPiket extends Model
 
     Public function scopeSearch($query, $keyword)
     {
-        $query->where('hari', 'like', '%' . $keyword . '%');
+        $query->where('kode_hari', 'like', '%' . $keyword . '%');
     }
 }

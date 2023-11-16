@@ -23,18 +23,20 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="hari" class="form-label">Hari</label>
+                        <label for="kode_hari" class="form-label">Hari</label>
                         <span class="text-danger">*</span>
-                        <select name="hari" class="form-select @error('hari') is-invalid @enderror" id="inputGroupSelect01"
-                            id="hari">
+                        <select name="kode_hari" class="form-select @error('kode_hari') is-invalid @enderror" id="inputGroupSelect01"
+                            id="kode_hari">
                             <option value="" selected="">Pilih...</option>
-                            <option value="se">Senin</option>
-                            <option value="sel">Selasa</option>
-                            <option value="ra">Rabu</option>
-                            <option value="ka">Kamis</option>
-                            <option value="ju">Jum'at</option>
+                            <option value="0">Minggu</option>
+                            <option value="1">Senin</option>
+                            <option value="2">Selasa</option>
+                            <option value="3">Rabu</option>
+                            <option value="4">Kamis</option>
+                            <option value="5">Jum'at</option>
+                            <option value="6">Sabtu</option>
                         </select>
-                        @error('hari')
+                        @error('kode_hari')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
