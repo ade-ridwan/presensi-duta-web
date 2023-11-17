@@ -71,6 +71,12 @@
                     </a>
                 </li>
 
+                <li class="menu-item {{ request()->routeIs('admin.guru_mapel.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.guru_mapel.index') }}" class="menu-link">
+                        <div>Data Guru Mapel</div>
+                    </a>
+                </li>
+
              </ul>
          </li>
 
