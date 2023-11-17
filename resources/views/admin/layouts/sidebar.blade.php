@@ -64,6 +64,13 @@
                         <div>Data Pegawai</div>
                     </a>
                 </li>
+
+                <li class="menu-item {{ request()->routeIs('admin.guru_piket.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.guru_piket.index') }}" class="menu-link">
+                        <div>Data Guru Piket</div>
+                    </a>
+                </li>
+
              </ul>
          </li>
 
