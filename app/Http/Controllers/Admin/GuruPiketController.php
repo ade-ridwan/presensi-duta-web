@@ -17,6 +17,8 @@ class GuruPiketController extends Controller
 
     public function create()
     {
+        // karena ada relasi, ke pegawai maka kita perlu mengirimkan data pegawai,
+        // data pegawai ini akan dalam bentuk select option / pilihan
         $pegawai = Pegawai::get();
         return view('admin.pages.guru_piket.create', compact('pegawai'));
     }
@@ -36,10 +38,13 @@ class GuruPiketController extends Controller
             ]
         );
 
-        $pegawai= Pegawai::find($request->kode_pegawai);
-        $validated['id_user']=$pegawai->id_user;
+        // ambil data dari tabel pegawai dengan kode_pegawai
+        $pegawai = Pegawai::find($request->kode_pegawai);
 
-        GuruPiket::created($validated);
+        // ini itu kita ambil id_user dari tbl_pegawai
+        $validated['id_user'] = $pegawai->id_user;
+
+        GuruPiket::create($validated);
 
         return redirect()->route('admin.guru_piket.index')->with('success', 'Data Guru Piket berhasil ditambahkan');
     }
@@ -47,8 +52,8 @@ class GuruPiketController extends Controller
     public function edit($id)
     {
         $guru_piket = GuruPiket::find($id);
-        $pegawai = Pegawai::find($guru_piket->kode_pegawai);
-        return view('admin.pages.guru_piket.edit', compact('guru_piket', 'user'));
+        $pegawai = Pegawai::get();
+        return view('admin.pages.guru_piket.edit', compact('guru_piket', 'pegawai'));
     }
 
     public function update(Request $request, $id)
@@ -62,6 +67,12 @@ class GuruPiketController extends Controller
         );
 
         $guru_piket = GuruPiket::find($id);
+
+        // ambil data dari tabel pegawai dengan kode_pegawai
+        $pegawai = Pegawai::find($request->kode_pegawai);
+        // ini itu kita ambil id_user dari tbl_pegawai
+        $validated['id_user'] = $pegawai->id_user;
+
         $guru_piket->update($validated); // update data ke database
 
         return redirect()->route('admin.guru_piket.index')->with('success', 'Data Guru Piket berhasil diperbarui');

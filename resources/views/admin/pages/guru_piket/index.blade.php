@@ -42,8 +42,9 @@
                             @forelse ($guru_piket as $key => $item)
                                 <tr>
                                     <th scope="row">{{ $guru_piket->firstItem() + $key }}</th>
-                                    <td>{{ $pegawai->nama }}</td>
-                                    <td>{{ $item->hari }}</td>
+                                    {{-- jadi pemanggilan untuk relasi nama function model untuk relasinya  --}}
+                                    <td>{{ $item->pegawai->nama }}</td>
+                                    <td>{{ getDayID($item->kode_hari) }}</td>
                                     <td>{{ $item->tahun_ajaran }}</td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"
