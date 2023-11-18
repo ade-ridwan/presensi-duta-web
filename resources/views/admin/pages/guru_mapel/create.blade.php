@@ -29,7 +29,7 @@
                             class="form-select @error('id_mapel') is-invalid @enderror" id="id_mapel">
                             <option value="">Silakan Pilih Mata pelajaran</option>
                             @foreach ($mapel as $item)
-                            <option value=" {{ $item->id_mapel }}">{{ $item->nama }}</option>
+                            <option value=" {{ $item->id }}">{{ $item->nama }}</option>
                             @endforeach
                         </select>
                         @error('id_mapel')

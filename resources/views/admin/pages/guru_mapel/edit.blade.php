@@ -30,7 +30,7 @@
                             class="form-select @error('id_mapel') is-invalid @enderror" id="id_mapel">
                             <option value="">Silakan Pilih Mata Pelajaran</option>
                             @foreach ($mapel as $item)
-                                <option @selected($guru_mapel->id_mapel == $item->id_mapel) value="{{ $item->id_mapel }}">{{ $item->nama }}
+                                <option @selected($guru_mapel->id_mapel == $item->id) value="{{ $item->id }}">{{ $item->nama }}
                                 </option>
                             @endforeach
                         </select>
@@ -44,7 +44,7 @@
                         <label for="tahun_ajaran" class="form-label">Tahun Ajaran</label>
                         <input name="tahun_ajaran" placeholder="Masukkan disini" type="text"
                             class="form-control @error('tahun_ajaran') is-invalid @enderror" id="tahun_ajaran"
-                            value="{{ $guru_piket->tahun_ajaran }}">
+                            value="{{ $guru_mapel->tahun_ajaran }}">
                         @error('tahun_ajaran')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

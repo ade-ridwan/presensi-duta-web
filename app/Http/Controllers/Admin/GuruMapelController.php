@@ -31,7 +31,7 @@ class GuruMapelController extends Controller
             [
                 'kode_pegawai' => 'required',
                 'id_mapel' => 'required',
-                'tahun_ajaran' => 'required',
+                'tahun_ajaran' => 'required'
             ],
             [
                 'kode_pegawai.required' => 'Nama Pegawai wajib diisi',
@@ -55,7 +55,8 @@ class GuruMapelController extends Controller
     {
         $guru_mapel = GuruMapel::find($id);
         $pegawai = Pegawai::get();
-        return view('admin.pages.guru_mapel.edit', compact('guru_mapel', 'pegawai'));
+        $mapel = Mapel::get();
+        return view('admin.pages.guru_mapel.edit', compact('guru_mapel', 'pegawai', 'mapel'));
     }
 
     public function update(Request $request, $id)
@@ -64,7 +65,7 @@ class GuruMapelController extends Controller
             [
                 'kode_pegawai' => 'required',
                 'id_mapel' => 'required',
-                'tahun_ajaran' => 'required',
+                'tahun_ajaran' => 'required'
             ]
         );
 
@@ -88,6 +89,6 @@ class GuruMapelController extends Controller
 
         // setelah bersih, bisa mengapus data parentnya
 
-        return redirect()->route('admin.guru_mapel.index')->with('success', 'Data Guru Piket berhasil dihapus');
+        return redirect()->route('admin.guru_mapel.index')->with('success', 'Data Guru Mapel berhasil dihapus');
     }
 }
