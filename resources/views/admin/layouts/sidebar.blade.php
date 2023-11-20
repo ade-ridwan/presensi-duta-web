@@ -60,22 +60,25 @@
                  </li>
 
                  <li class="menu-item {{ request()->routeIs('admin.pegawai.*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.pegawai.index') }}" class="menu-link">
-                        <div>Data Pegawai</div>
-                    </a>
-                </li>
+                     <a href="{{ route('admin.pegawai.index') }}" class="menu-link">
+                         <div>Data Pegawai</div>
+                     </a>
+                 </li>
 
-                <li class="menu-item {{ request()->routeIs('admin.guru_piket.*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.guru_piket.index') }}" class="menu-link">
-                        <div>Data Guru Piket</div>
-                    </a>
-                </li>
+                 <li class="menu-item {{ request()->routeIs('admin.guru_piket.*') ? 'active' : '' }}">
+                     <a href="{{ route('admin.guru_piket.index') }}" class="menu-link">
+                         <div>Data Guru Piket</div>
+                     </a>
+                 </li>
 
-                <li class="menu-item {{ request()->routeIs('admin.jadwal_pelajaran.*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.jadwal_pelajaran.index') }}" class="menu-link">
-                        <div>Data Jadwal Pelajaran</div>
-                    </a>
-                </li>
+                 <li class="menu-item {{ request()->routeIs('admin.jadwal_pelajaran.*') ? 'active' : '' }}">
+                     <a href="{{ route('admin.jadwal_pelajaran.index') }}" class="menu-link">
+                         <div>Data Jadwal Pelajaran</div>
+                 <li class="menu-item {{ request()->routeIs('admin.guru_mapel.*') ? 'active' : '' }}">
+                     <a href="{{ route('admin.guru_mapel.index') }}" class="menu-link">
+                         <div>Data Guru Mapel</div>
+                     </a>
+                 </li>
 
              </ul>
          </li>
