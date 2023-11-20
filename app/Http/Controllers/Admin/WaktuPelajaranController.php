@@ -27,7 +27,6 @@ class WaktuPelajaranController extends Controller
                 'jam_masuk' => 'required',
                 'jam_keluar' => 'required',
                 'kode_hari' => 'required',
-                'nama_hari' => 'required',
 
             ],
             [
@@ -35,7 +34,6 @@ class WaktuPelajaranController extends Controller
                 'jam_masuk.required' => 'wajib di-isi',
                 'jam_keluar.required' => 'wajib di-isi',
                 'kode_hari.required' => 'wajib di-isi',
-                'nama_hari.required' => 'wajib di-isi',
 
             ]
         );
@@ -59,17 +57,8 @@ class WaktuPelajaranController extends Controller
                 'jam_masuk' => 'required',
                 'jam_keluar' => 'required',
                 'kode_hari' => 'required',
-                'nama_hari' => 'required',
 
             ],
-            [
-                'nama.required' => 'wajib di-isi',
-                'jam_masuk.required' => 'wajib di-isi',
-                'jam_keluar.required' => 'wajib di-isi',
-                'kode_hari.required' => 'wajib di-isi',
-                'nama_hari.required' => 'wajib di-isi',
-
-            ]
         );
 
         WaktuPelajaran::find($id)->update($validated); // update data ke database

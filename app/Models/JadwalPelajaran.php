@@ -16,4 +16,26 @@ class JadwalPelajaran extends Model
         'id_waktu_pelajaran',
         'id_ruang'
     ];
+
+    public function guru_mapel()
+    {
+        return$this->belongsTo(GuruMapel::class, 'id_guru_mapel');
+    }
+
+    public function waktu_pelajaran()
+    {
+        return $this->belongsTo(WaktuPelajaran::class, 'id_waktu_pelajaran');
+    }
+
+    public function ruang()
+    {
+        return $this->belongsTo(Ruang::class, 'id_ruang');
+    }
+
+    Public function scopeSearch($query, $keyword)
+    {
+        $query->where('id_guru_mapel', 'like', '%' . $keyword . '%');
+    }
+
+
 }

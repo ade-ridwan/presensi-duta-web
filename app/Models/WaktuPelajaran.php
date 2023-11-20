@@ -15,7 +15,6 @@ class WaktuPelajaran extends Model
         'jam_masuk',
         'jam_keluar',
         'kode_hari',
-        'nama_hari',
     ];
     public function scopeSearch($query, $keyword)
     {

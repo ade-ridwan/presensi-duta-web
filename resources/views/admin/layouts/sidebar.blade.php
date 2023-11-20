@@ -71,6 +71,12 @@
                     </a>
                 </li>
 
+                <li class="menu-item {{ request()->routeIs('admin.jadwal_pelajaran.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.jadwal_pelajaran.index') }}" class="menu-link">
+                        <div>Data Jadwal Pelajaran</div>
+                    </a>
+                </li>
+
              </ul>
          </li>
 
