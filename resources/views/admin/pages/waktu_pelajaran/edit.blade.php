@@ -10,7 +10,25 @@
                     @csrf
                     @method('PATCH')
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
+                        <label for="kode_hari" class="form-label">Hari</label>
+                        <span class="text-danger">*</span>
+                        <select name="kode_hari" class="form-select @error('kode_hari') is-invalid @enderror"
+                            id="inputGroupSelect01" id="kode_hari">
+                            <option value="">Pilih...</option>
+                            <option value="1" @selected($waktu_pelajaran->kode_hari == 1)>Senin</option>
+                            <option value="2" @selected($waktu_pelajaran->kode_hari == 2)>Selasa</option>
+                            <option value="3" @selected($waktu_pelajaran->kode_hari == 3)>Rabu</option>
+                            <option value="4" @selected($waktu_pelajaran->kode_hari == 4)>Kamis</option>
+                            <option value="5" @selected($waktu_pelajaran->kode_hari == 5)>Jum'at</option>
+                            <option value="6" @selected($waktu_pelajaran->kode_hari == 6)>Sabtu</option>
+                        </select>
+                        @error('kode_hari')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Jam Ke</label>
                         <input name="nama" placeholder="Masukkan disini" type="text"
                             class="form-control @error('nama') is-invalid @enderror" id="nama"
                             value="{{ $waktu_pelajaran->nama }}">
@@ -39,25 +57,6 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3">
-                        <label for="kode_hari" class="form-label">kode hari</label>
-                        <input name="kode_hari" placeholder="Masukkan disini" type="text"
-                            class="form-control @error('kode_hari') is-invalid @enderror" id="kode_hari"
-                            value="{{ $waktu_pelajaran->kode_hari }}">
-                        @error('kode_hari')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="nama_hari" class="form-label">nama hari</label>
-                        <input name="nama_hari" placeholder="Masukkan disini" type="text"
-                            class="form-control @error('nama_hari') is-invalid @enderror" id="nama_hari"
-                            value="{{ $waktu_pelajaran->nama_hari }}">
-                        @error('nama_hari')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
 
                     <div class="mt-3">
                         <button type="Tambahkan" class="btn btn-primary">Simpan</button>

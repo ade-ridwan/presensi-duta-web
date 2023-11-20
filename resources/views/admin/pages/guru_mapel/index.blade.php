@@ -3,7 +3,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
             <div class="card-body">
-                <h3>Data Waktu Pelajaran</h3>
+                <h3>Data Guru Mapel</h3>
 
                 @if ($message = session('success'))
                     <div class="alert alert-success my-4">
@@ -13,7 +13,7 @@
                 <form action="" method="GET">
                     <div class="mb-3 d-flex gap-3 justify-content-between">
                         <div>
-                            <a href="{{ route('admin.waktu_pelajaran.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                            <a href="{{ route('admin.guru_mapel.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                         </div>
                         <div>
                             <div class="input-group input-group-sm">
@@ -32,26 +32,26 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Hari</th>
-                                <th scope="col">Jam Ke</th>
-                                <th scope="col">Jam Masuk</th>
-                                <th scope="col">Jam Keluar</th>
+                                <th scope="col">Nama Guru</th>
+                                <th scope="col">Mata pelajaran</th>
+                                <th scope="col">Tahun Ajaran</th>
+                                <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($waktu_pelajaran as $key => $item)
+                            @forelse ($guru_mapel as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $waktu_pelajaran->firstItem() + $key }}</th>
-                                    <td>{{ getDayID($item->kode_hari) }}</td>
-                                    <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->jam_masuk }}</td>
-                                    <td>{{ $item->jam_keluar }}</td>
+                                    <th scope="row">{{ $guru_mapel->firstItem() + $key }}</th>
+                                    {{-- jadi pemanggilan untuk relasi nama function model untuk relasinya  --}}
+                                    <td>{{ $item->pegawai->nama }}</td>
+                                    <td>{{ $item->mapel->nama }}</td>
+                                    <td>{{ $item->tahun_ajaran }}</td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"
-                                            action="{{ route('admin.waktu_pelajaran.destroy', $item->id) }}" method="post">
+                                            action="{{ route('admin.guru_mapel.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{ route('admin.waktu_pelajaran.edit', $item->id) }}"
+                                            <a href="{{ route('admin.guru_mapel.edit', $item->id) }}"
                                                 class="btn btn-sm btn-primary">
                                                 Edit</a>
                                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
@@ -67,7 +67,7 @@
                     </table>
                 </div>
                 <div class="mt-3">
-                    {{ $waktu_pelajaran->links() }}
+                    {{ $guru_mapel->links() }}
                 </div>
             </div>
         </div>
