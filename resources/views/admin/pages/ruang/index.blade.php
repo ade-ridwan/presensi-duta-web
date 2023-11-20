@@ -34,6 +34,7 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Ruang</th>
                                 <th scope="col">Tahun Ajaran</th>
+                                <th scope="col">Kode QR</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -43,6 +44,11 @@
                                     <th scope="row">{{ $ruang->firstItem() + $key }}</th>
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->tahun_ajaran }}</td>
+                                    <td>
+                                        <div class="visible-print text-center">
+                                            {!! QrCode::size(100)->generate($item->id) !!}
+                                        </div>
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"
                                             action="{{ route('admin.ruang.destroy', $item->id) }}" method="post">
