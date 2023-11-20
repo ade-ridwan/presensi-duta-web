@@ -64,6 +64,13 @@
              </a>
          </li>
 
+         <li class="menu-item {{ request()->routeIs(['pegawai.jadwal_pelajaran.*']) ? 'active open' : '' }}">
+             <a href="{{ route('pegawai.jadwal_pelajaran.index') }}" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-calendar"></i>
+                 <div>Jadwal Pelajaran</div>
+             </a>
+         </li>
+
          <li class="menu-item">
              <a href="index.html" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-home-circle"></i>

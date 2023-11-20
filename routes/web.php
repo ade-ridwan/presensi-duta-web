@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WaktuAbsensiController;
 use App\Http\Controllers\Admin\WaktuPelajaranController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Pegawai\JadwalPelajaranController as PegawaiJadwalPelajaranController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,4 +59,6 @@ Route::prefix('pegawai')
         Route::get('/dashboard', function () {
             return view('pegawai.pages.dashboard.index');
         })->name('dashboard');
+
+        Route::resource('/jadwal_pelajaran', PegawaiJadwalPelajaranController::class);
     });

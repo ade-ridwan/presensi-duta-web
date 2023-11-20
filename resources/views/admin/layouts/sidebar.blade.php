@@ -79,12 +79,12 @@
 
              </ul>
          </li>
-         <li
-             class="menu-item {{ request()->routeIs(['admin.jadwal_pelajaran.*']) ? 'active open' : '' }}">
-             <a href="{{ route('admin.jadwal_pelajaran.index')}}" class="menu-link">
+         <li class="menu-item {{ request()->routeIs(['admin.jadwal_pelajaran.*']) ? 'active open' : '' }}">
+             <a href="{{ route('admin.jadwal_pelajaran.index') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-calendar"></i>
                  <div>Jadwal Pelajaran</div>
              </a>
+         </li>
 
          <li class="menu-header small text-uppercase">
              <span class="menu-header-text">Pages</span>
