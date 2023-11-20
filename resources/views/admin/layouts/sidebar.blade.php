@@ -71,9 +71,6 @@
                      </a>
                  </li>
 
-                 <li class="menu-item {{ request()->routeIs('admin.jadwal_pelajaran.*') ? 'active' : '' }}">
-                     <a href="{{ route('admin.jadwal_pelajaran.index') }}" class="menu-link">
-                         <div>Data Jadwal Pelajaran</div>
                  <li class="menu-item {{ request()->routeIs('admin.guru_mapel.*') ? 'active' : '' }}">
                      <a href="{{ route('admin.guru_mapel.index') }}" class="menu-link">
                          <div>Data Guru Mapel</div>
@@ -82,6 +79,12 @@
 
              </ul>
          </li>
+         <li
+             class="menu-item {{ request()->routeIs(['admin.jadwal_pelajaran.*']) ? 'active open' : '' }}">
+             <a href="{{ route('admin.jadwal_pelajaran.index')}}" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-calendar"></i>
+                 <div>Jadwal Pelajaran</div>
+             </a>
 
          <li class="menu-header small text-uppercase">
              <span class="menu-header-text">Pages</span>

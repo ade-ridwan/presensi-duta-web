@@ -32,7 +32,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Hari - Jam Ke</th>
+                                <th scope="col">Waktu Pelajaran</th>
                                 <th scope="col">Nama Guru - Mapel</th>
                                 <th scope="col">Ruang</th>
                                 <th scope="col">Tahun Ajaran</th>
@@ -44,9 +44,10 @@
                                 <tr>
                                     <th scope="row">{{ $jadwal_pelajaran->firstItem() + $key }}</th>
                                     {{-- jadi pemanggilan untuk relasi nama function model untuk relasinya  --}}
-                                    <td>{{ $item->waktu_pelajaran->kode_hari }}</td>
+                                    <td>{{ $item->waktu_pelajaran->nama }} -
+                                        {{ getDayId($item->waktu_pelajaran->kode_hari)}}</td>
                                     <td>{{ $item->waktu_pelajaran->nama }}</td>
-                                    <td>{{ $item->->nama }}</td>
+                                    <td>{{ $item->ruang->nama }}</td>
                                     <td>{{ $item->tahun_ajaran }}</td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"

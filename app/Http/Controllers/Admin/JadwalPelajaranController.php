@@ -13,7 +13,8 @@ class JadwalPelajaranController extends Controller
 {
     public function index(Request $request)
     {
-        $jadwal_pelajaran = JadwalPelajaran::latest()->search($request->search)->paginate(10);
+        $jadwal_pelajaran = JadwalPelajaran::with(['ruang','guru_mapel', 'guru_mapel.pegawai', 'guru_mapel.mapel'])
+        ->latest()->search($request->search)->paginate(10);
         return view('admin.pages.jadwal_pelajaran.index', compact('jadwal_pelajaran'));
     }
 
@@ -21,7 +22,7 @@ class JadwalPelajaranController extends Controller
     {
         // karena ada relasi, ke pegawai maka kita perlu mengirimkan data pegawai,
         // data pegawai ini akan dalam bentuk select option / pilihan
-        $guru_mapel = GuruMapel::get();
+        $guru_mapel = GuruMapel::with(['pegawai', 'mapel'])->get();
         $waktu_pelajaran = WaktuPelajaran::get();
         $ruang = Ruang::get();
         return view('admin.pages.jadwal_pelajaran.create', compact('guru_mapel', 'waktu_pelajaran', 'ruang'));
@@ -58,7 +59,7 @@ class JadwalPelajaranController extends Controller
     public function edit($id)
     {
         $jadwal_pelajaran = JadwalPelajaran::find($id);
-        $guru_mapel = GuruMapel::get();
+        $guru_mapel = GuruMapel::with(['pegawai', 'mapel'])->get();
         $waktu_pelajaran = WaktuPelajaran::get();
         $ruang = Ruang::get();
         return view('admin.pages.jadwal_pelajaran.edit', compact('jadwal_pelajaran', 'guru_mapel', 'waktu_pelajaran', 'ruang'));

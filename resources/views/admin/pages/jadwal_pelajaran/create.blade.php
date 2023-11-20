@@ -3,36 +3,55 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
             <div class="card-body">
-                <h3>Tambah Data Guru Mapel</h3>
+                <h3>Tambah Data Jadwal Pelajaran</h3>
 
-                <form action="{{ route('admin.guru_mapel.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.jadwal_pelajaran.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="kode_pegawai" class="form-label">Nama Pegawai</label>
+                        <label for="id_waktu_pelajaran" class="form-label">Waktu Pelajaran</label>
                         <span class="text-danger">*</span>
-                        <select name="kode_pegawai" placeholder="Masukkan disini" type="text"
-                            class="form-select @error('kode_pegawai') is-invalid @enderror" id="kode_pegawai">
-                            <option value="">Silakan Pilih Nama Pegawai</option>
-                            @foreach ($pegawai as $item)
-                            <option value=" {{ $item->kode_pegawai }}">{{ $item->nama }}</option>
+                        <select name="id_waktu_pelajaran" placeholder="Masukkan disini" type="text"
+                            class="form-select @error('id_waktu_pelajaran') is-invalid @enderror" id="id_waktu_pelajaran">
+                            <option value="">Silakan Pilih Waktu Pelajaran</option>
+                            @foreach ($waktu_pelajaran as $item)
+                            <option value="{{$item->id}}">
+                                {{-- memunculkan pilihan dengan text beberapa field --}}
+                                {{ $item->nama }} - {{ getDayID($item->kode_hari) }}
+                            </option>
                             @endforeach
                         </select>
-                        @error('kode_pegawai')
+                        @error('id_waktu_pelajaran')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label for="id_mapel" class="form-label">Mata Pelajaran</label>
+                        <label for="id_guru_mapel" class="form-label">Nama Guru - Mapel</label>
                         <span class="text-danger">*</span>
-                        <select name="id_mapel" placeholder="Masukkan disini" type="text"
-                            class="form-select @error('id_mapel') is-invalid @enderror" id="id_mapel">
-                            <option value="">Silakan Pilih Mata pelajaran</option>
-                            @foreach ($mapel as $item)
-                            <option value=" {{ $item->id }}">{{ $item->nama }}</option>
+                        <select name="id_guru_mapel" placeholder="Masukkan disini" type="text"
+                            class="form-select @error('id_guru_mapel') is-invalid @enderror" id="id_guru_mapel">
+                            <option value="">Silakan Pilih Guru Mapel</option>
+                            @foreach ($guru_mapel as $item)
+                            <option value="{{ $item->id }}">
+                                {{ $item->pegawai->nama }} - {{ $item->mapel->nama }}</option>
                             @endforeach
                         </select>
-                        @error('id_mapel')
+                        @error('id_guru_mapel')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_ruang" class="form-label">Ruang</label>
+                        <span class="text-danger">*</span>
+                        <select name="id_ruang" placeholder="Masukkan disini" type="text"
+                            class="form-select @error('id_ruang') is-invalid @enderror" id="id_ruang">
+                            <option value="">Silakan Pilih Ruang</option>
+                            @foreach ($ruang as $item)
+                            <option value="{{ $item->id }}">{{ $item->nama }} </option>
+                            @endforeach
+                        </select>
+                        @error('id_ruang')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -49,7 +68,7 @@
 
                     <div class="mt-3">
                         <button type="Tambahkan" class="btn btn-primary">Simpan</button>
-                        <a href="{{ route('admin.guru_mapel.index') }}" class="btn btn-secondary">Kembali</a>
+                        <a href="{{ route('admin.jadwal_pelajaran.index') }}" class="btn btn-secondary">Kembali</a>
                     </div>
                 </form>
             </div>

@@ -5,36 +5,54 @@
             <div class="card-body">
                 <h3>Edit Data Guru Mapel</h3>
 
-                <form action="{{ route('admin.guru_mapel.update', $guru_mapel->id) }}" method="POST"
+                <form action="{{ route('admin.jadwal_pelajaran.update', $jadwal_pelajaran->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="mb-3">
-                        <label for="kode_pegawai" class="form-label">Nama Pegawai</label>
-                        <select name="kode_pegawai" placeholder="Masukkan disini" type="text"
-                            class="form-select @error('kode_pegawai') is-invalid @enderror" id="kode_pegawai">
-                            <option value="">Silakan Pilih Nama Pegawai</option>
-                            @foreach ($pegawai as $item)
-                                <option @selected($guru_mapel->kode_pegawai == $item->kode_pegawai) value="{{ $item->kode_pegawai }}">{{ $item->nama }}
+                        <label for="id_waktu_pelajaran" class="form-label">Waktu Pelajaran</label>
+                        <select name="id_waktu_pelajaran" placeholder="Masukkan disini" type="text"
+                            class="form-select @error('id_waktu_pelajaran') is-invalid @enderror" id="id_waktu_pelajaran">
+                            <option value="">Silakan Pilih Waktu Pelajaran</option>
+                            @foreach ($waktu_pelajaran as $item)
+                                <option @selected($jadwal_pelajaran->id_waktu_pelajaran == $item->id) value="{{ $item->id}}">
+                                    {{ $item->nama }} - {{ getDayID($item->kode_hari) }}
                                 </option>
                             @endforeach
                         </select>
-                        @error('kode_pegawai')
+                        @error('id_waktu_pelajaran')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label for="id_mapel" class="form-label">Mata pelajaran</label>
-                        <select name="id_mapel" placeholder="Masukkan disini" type="text"
-                            class="form-select @error('id_mapel') is-invalid @enderror" id="id_mapel">
-                            <option value="">Silakan Pilih Mata Pelajaran</option>
-                            @foreach ($mapel as $item)
-                                <option @selected($guru_mapel->id_mapel == $item->id) value="{{ $item->id }}">{{ $item->nama }}
-                                </option>
+                        <label for="id_guru_mapel" class="form-label">Nama Guru - Mapel</label>
+                        <span class="text-danger">*</span>
+                        <select name="id_guru_mapel" placeholder="Masukkan disini" type="text"
+                            class="form-select @error('id_guru_mapel') is-invalid @enderror" id="id_guru_mapel">
+                            <option value="">Silakan Pilih Guru Mapel</option>
+                            @foreach ($guru_mapel as $item)
+                            <option @selected($jadwal_pelajaran->id_guru_mapel == $item->id) value="{{ $item->id }}">
+                                {{ $item->pegawai->nama }} - {{ $item->mapel->nama }}</option>
                             @endforeach
                         </select>
-                        @error('id_mapel')
+                        @error('id_guru_mapel')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_ruang" class="form-label">Ruang</label>
+                        <span class="text-danger">*</span>
+                        <select name="id_ruang" placeholder="Masukkan disini" type="text"
+                            class="form-select @error('id_ruang') is-invalid @enderror" id="id_ruang">
+                            <option value="">Silakan Pilih Ruang</option>
+                            @foreach ($ruang as $item)
+                            <option @selected($jadwal_pelajaran->id_ruang == $item->id) value="{{ $item->id }}">
+                                {{ $item->nama }} </option>
+                            @endforeach
+                        </select>
+                        @error('id_ruang')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -43,7 +61,7 @@
                         <label for="tahun_ajaran" class="form-label">Tahun Ajaran</label>
                         <input name="tahun_ajaran" placeholder="Masukkan disini" type="text"
                             class="form-control @error('tahun_ajaran') is-invalid @enderror" id="tahun_ajaran"
-                            value="{{ $guru_mapel->tahun_ajaran }}">
+                            value="{{ $jadwal_pelajaran->tahun_ajaran }}">
                         @error('tahun_ajaran')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
