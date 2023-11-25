@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\WaktuAbsensiController;
 use App\Http\Controllers\Admin\WaktuPelajaranController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Pegawai\JadwalPelajaranController as PegawaiJadwalPelajaranController;
+use App\Http\Controllers\Pegawai\ScanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,4 +62,7 @@ Route::prefix('pegawai')
         })->name('dashboard');
 
         Route::resource('/jadwal_pelajaran', PegawaiJadwalPelajaranController::class);
+
+        Route::get('/scan/ruangan', [ScanController::class, 'scanRuangan'])->name('scan.ruangan');
+        Route::post('/scan/ruangan', [ScanController::class, 'storeScanRuangan'])->name('scan.ruangan.store');
     });

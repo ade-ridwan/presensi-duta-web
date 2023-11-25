@@ -78,8 +78,8 @@
              </a>
          </li>
 
-         <li class="menu-item">
-             <a href="index.html" class="menu-link">
+         <li class="menu-item {{ request()->routeIs(['pegawai.scan.ruangan*']) ? 'active' : '' }}">
+             <a href="{{ route('pegawai.scan.ruangan') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
                  <div data-i18n="Analytics">Scan Ruangan</div>
              </a>

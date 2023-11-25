@@ -9,7 +9,7 @@ class AbsenMengajar extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_absensi_mengajar";
+    protected $table = "tb_absen_mengajar";
     protected $fillable = [
         'kode_pegawai',
         'id_jadwal_pelajaran',

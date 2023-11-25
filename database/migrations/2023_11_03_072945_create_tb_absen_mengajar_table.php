@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('kode_pegawai')->references('kode_pegawai')->on('tb_pegawai')->onDelete('restrict');
             $table->foreignId('id_jadwal_pelajaran')->references('id')->on('tb_jadwal_pelajaran')->onDelete('restrict');
             $table->foreignId('id_ruang')->references('id')->on('tb_ruang')->onDelete('restrict');
-            $table->foreignId('id_guru_piket')->references('id')->on('tb_guru_piket')->onDelete('restrict');
+            $table->foreignId('id_guru_piket')->nullable()->references('id')->on('tb_guru_piket')->onDelete('restrict');
             $table->date('tgl');
             $table->time('jam_masuk');
-            $table->time('jam_keluar');
+            $table->time('jam_keluar')->nullable();
             $table->integer('tahun_ajaran');
             $table->timestamps();
         });
