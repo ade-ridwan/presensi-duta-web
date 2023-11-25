@@ -30,6 +30,7 @@
                 success: function(response) {
                     console.log(response);
                     alert(response.message);
+                    window.location.href = '{{ route('pegawai.dashboard') }}';
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert('gagal');

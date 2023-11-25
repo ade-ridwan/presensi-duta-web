@@ -25,7 +25,7 @@ class ScanController extends Controller
         $id_guru_piket = null;
         $tgl = date('Y-m-d');
         $jam_masuk = date('H:i:s');
-        // $jam_keluar = date('H:i:s');
+        $jam_keluar = null;
 
         $absen = AbsenMengajar::updateOrCreate([
             'tgl' => date('Y-m-d'),
