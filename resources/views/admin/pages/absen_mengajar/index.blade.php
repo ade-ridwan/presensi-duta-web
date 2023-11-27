@@ -3,7 +3,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
             <div class="card-body">
-                <h3>Data Jadwal Pelajaran</h3>
+                <h3>Data Absensi Mengajar</h3>
 
                 @if ($message = session('success'))
                     <div class="alert alert-success my-4">
@@ -12,9 +12,9 @@
                 @endif
                 <form action="" method="GET">
                     <div class="mb-3 d-flex gap-3 justify-content-between">
-                        <div>
-                            <a href="{{ route('admin.jadwal_pelajaran.create') }}" class="btn btn-sm btn-primary">Tambah</a>
-                        </div>
+                        {{-- <div>
+                            <a href="{{ route('admin.absen_mengajar.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                        </div> --}}
                         <div>
                             <div class="input-group input-group-sm">
                                 <input type="text" name="search" value="{{ request()->search }}" class="form-control"
@@ -32,31 +32,34 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Waktu Pelajaran</th>
-                                <th scope="col">Nama Guru - Mapel</th>
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">Nama Guru</th>
+                                <th scope="col">Mata Pelajaran</th>
                                 <th scope="col">Ruang</th>
+                                <th scope="col">Jam Masuk</th>
+                                <th scope="col">Jam Keluar</th>
                                 <th scope="col">Tahun Ajaran</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($jadwal_pelajaran as $key => $item)
+                            @forelse ($absen_mengajar as $key => $item)
                                 <tr>
-                                    <th scope="row">{{ $jadwal_pelajaran->firstItem() + $key }}</th>
+                                    <th scope="row">{{ $absen_mengajar->firstItem() + $key }}</th>
                                     {{-- jadi pemanggilan untuk relasi nama function model untuk relasinya  --}}
-                                    <td>{{ $item->waktu_pelajaran->nama }} -
-                                        {{ getDayId($item->waktu_pelajaran->kode_hari)}}</td>
-                                    <td>{{ $item->guru_mapel->pegawai->nama }} -
-                                        {{ $item->guru_mapel->mapel->nama}}
-                                    </td>
-                                    <td>{{ $item->ruang->nama }}</td>
+                                    <td>{{ $item->tgl }}</td>
+                                    <td>{{ $item->pegawai->nama }}</td>
+                                    <td>{{ $item->jadwal_pelajaran->id_guru_mapel }}</td>
+                                    <td>{{ $item->jadwal_pelajaran->id_ruang }}</td>
+                                    <td>{{ $item->jam_masuk}}</td>
+                                    <td>{{ $item->jam_keluar}}</td>
                                     <td>{{ $item->tahun_ajaran }}</td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"
-                                            action="{{ route('admin.jadwal_pelajaran.destroy', $item->id) }}" method="post">
+                                            action="{{ route('admin.absen_mengajar.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{ route('admin.jadwal_pelajaran.edit', $item->id) }}"
+                                            <a href="{{ route('admin.absen_mengajar.edit', $item->id) }}"
                                                 class="btn btn-sm btn-primary">
                                                 Edit</a>
                                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
@@ -72,7 +75,7 @@
                     </table>
                 </div>
                 <div class="mt-3">
-                    {{ $jadwal_pelajaran->links() }}
+                    {{ $absen_mengajar->links() }}
                 </div>
             </div>
         </div>

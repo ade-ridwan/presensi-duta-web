@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AbsenMengajarController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GuruMapelController;
 use App\Http\Controllers\Admin\GuruPiketController;
@@ -50,6 +51,7 @@ Route::prefix('admin')
         Route::resource('/guru_piket', GuruPiketController::class);
         Route::resource('/jadwal_pelajaran', JadwalPelajaranController::class);
         Route::resource('/guru_mapel', GuruMapelController::class);
+        Route::resource('/absen_mengajar', AbsenMengajarController::class);
     });
 
 
