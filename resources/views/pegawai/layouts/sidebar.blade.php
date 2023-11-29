@@ -84,5 +84,12 @@
                  <div data-i18n="Analytics">Scan Ruangan</div>
              </a>
          </li>
+
+         <li class="menu-item {{ request()->routeIs(['pegawai.absen_mengajar.index.*']) ? 'active' : '' }}">
+            <a href="{{ route('pegawai.absen_mengajar.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Absensi Mengajar</div>
+            </a>
+        </li>
      </ul>
  </aside>
