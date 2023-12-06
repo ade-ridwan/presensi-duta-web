@@ -20,6 +20,7 @@ class Pegawai extends Model
         'jk',
         'jenis_ptk',
         'status_pegawai',
+        'foto',
         'id_user',
     ];
 

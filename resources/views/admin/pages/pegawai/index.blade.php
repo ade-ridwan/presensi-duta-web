@@ -38,6 +38,7 @@
                                 <th scope="col">Jenis Kelamin</th>
                                 <th scope="col">Jenis PTK</th>
                                 <th scope="col">Status Pegawai</th>
+                                <th scope="col">Foto</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -69,6 +70,7 @@
                                         @if ($item->status_pegawai=='th')Tenaga Honorer Sekolah
                                         @endif
                                     </td>
+                                    <td>{{ $item->foto }}</td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"
                                             action="{{ route('admin.pegawai.destroy', $item->kode_pegawai) }}" method="post">

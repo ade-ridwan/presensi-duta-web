@@ -15,6 +15,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Pegawai\AbsenMengajarController as PegawaiAbsenMengajarController;
 use App\Http\Controllers\Pegawai\DashboardController as PegawaiDashboardController;
 use App\Http\Controllers\Pegawai\JadwalPelajaranController as PegawaiJadwalPelajaranController;
+use App\Http\Controllers\Pegawai\ProfilController;
 use App\Http\Controllers\Pegawai\ScanController;
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +69,7 @@ Route::prefix('pegawai')
 
         Route::resource('/jadwal_pelajaran', PegawaiJadwalPelajaranController::class);
         Route::resource('/absen_mengajar', PegawaiAbsenMengajarController::class);
+        Route::resource('/profil', ProfilController::class);
 
         Route::get('/scan/ruangan', [ScanController::class, 'scanRuangan'])->name('scan.ruangan');
         Route::post('/scan/ruangan', [ScanController::class, 'storeScanRuangan'])->name('scan.ruangan.store');

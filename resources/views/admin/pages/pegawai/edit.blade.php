@@ -98,6 +98,17 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="foto" class="form-label">Foto</label>
+                        <span class="text-danger">*</span>
+                        <input name="foto" placeholder="Masukkan disini" type="file"
+                            class="form-control @error('foto') is-invalid @enderror" id="foto"
+                            value="{{ $pegawai->foto }}">
+                        @error('foto')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <span class="text-danger">*</span>
                         <input name="email" placeholder="Masukkan disini" type="email"

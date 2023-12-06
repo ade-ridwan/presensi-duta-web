@@ -32,6 +32,7 @@ class PegawaiController extends Controller
                 'jk' => 'required',
                 'jenis_ptk' => 'required',
                 'status_pegawai' => 'required',
+                'foto' => 'required',
                 'email' => 'required|unique:users,email',
                 'password' => 'required'
             ],
@@ -42,6 +43,7 @@ class PegawaiController extends Controller
                 'jk.required' => 'Jenis Kelamin wajib diisi',
                 'jenis_ptk.required' => 'Jenis PTK wajib diisi',
                 'status_pegawai.required' => 'Status Pegawai wajib diisi',
+                'foto.required' => 'Foto wajib diisi',
                 'email.required' => 'Email Pegawai wajib diisi',
                 'password.required' => 'Password Pegawai wajib diisi',
             ]
@@ -80,6 +82,7 @@ class PegawaiController extends Controller
                 'jk' => 'required',
                 'jenis_ptk' => 'required',
                 'status_pegawai' => 'required',
+                'foto' => 'required',
                 'email' => 'required',
             ],
         );
