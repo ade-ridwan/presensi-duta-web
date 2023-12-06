@@ -75,8 +75,8 @@ class PegawaiController extends Controller
     {
         $validated = $request->validate(
             [
-                'kode_pegawai' => 'required|unique:tb_pegawai,kode_pegawai,'.$kode_pegawai.',kode_pegawai',
-                'nik' => 'required|unique:tb_pegawai,nik,'.$kode_pegawai.',kode_pegawai',
+                'kode_pegawai' => 'required|unique:tb_pegawai,kode_pegawai,' . $kode_pegawai . ',kode_pegawai',
+                'nik' => 'required|unique:tb_pegawai,nik,' . $kode_pegawai . ',kode_pegawai',
                 'nuptk' => 'nullable',
                 'nama' => 'required',
                 'jk' => 'required',
@@ -88,6 +88,11 @@ class PegawaiController extends Controller
         );
 
         $pegawai = pegawai::find($kode_pegawai);
+
+        if ($request->file('foto')) {
+            $validated['foto'] = $request->foto->storeAs('photo', $request->file('foto')->hashName());
+        }
+
         $pegawai->update($validated); // update data ke database
 
         if ($pegawai) {
