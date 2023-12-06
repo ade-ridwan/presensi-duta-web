@@ -49,19 +49,16 @@
                                     {{-- jadi pemanggilan untuk relasi nama function model untuk relasinya  --}}
                                     <td>{{ $item->tgl }}</td>
                                     <td>{{ $item->pegawai->nama }}</td>
-                                    <td>{{ $item->jadwal_pelajaran->id_guru_mapel }}</td>
-                                    <td>{{ $item->jadwal_pelajaran->id_ruang }}</td>
-                                    <td>{{ $item->jam_masuk}}</td>
-                                    <td>{{ $item->jam_keluar}}</td>
+                                    <td>{{ $item->jadwal_pelajaran->guru_mapel->mapel->nama }}</td>
+                                    <td>{{ $item->jadwal_pelajaran->ruang->nama }}</td>
+                                    <td>{{ $item->jam_masuk }}</td>
+                                    <td>{{ $item->jam_keluar }}</td>
                                     <td>{{ $item->tahun_ajaran }}</td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"
                                             action="{{ route('admin.absen_mengajar.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{ route('admin.absen_mengajar.edit', $item->id) }}"
-                                                class="btn btn-sm btn-primary">
-                                                Edit</a>
                                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                         </form>
                                     </td>
@@ -81,5 +78,3 @@
         </div>
     </div>
 @endsection
-
-

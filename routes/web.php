@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\WaktuAbsensiController;
 use App\Http\Controllers\Admin\WaktuPelajaranController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Pegawai\AbsenMengajarController as PegawaiAbsenMengajarController;
+use App\Http\Controllers\Pegawai\DashboardController as PegawaiDashboardController;
 use App\Http\Controllers\Pegawai\JadwalPelajaranController as PegawaiJadwalPelajaranController;
 use App\Http\Controllers\Pegawai\ScanController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,9 @@ Route::post('/login', [AuthController::class, 'authenticate'])->name('login.auth
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 
+Route::get('display', function () {
+    return view('display');
+});
 
 Route::prefix('admin')
     ->name('admin.')
@@ -60,9 +64,7 @@ Route::prefix('pegawai')
     ->name('pegawai.')
     ->middleware(['auth', 'role:pegawai'])
     ->group(function () {
-        Route::get('/dashboard', function () {
-            return view('pegawai.pages.dashboard.index');
-        })->name('dashboard');
+        Route::get('/dashboard', [PegawaiDashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('/jadwal_pelajaran', PegawaiJadwalPelajaranController::class);
         Route::resource('/absen_mengajar', PegawaiAbsenMengajarController::class);

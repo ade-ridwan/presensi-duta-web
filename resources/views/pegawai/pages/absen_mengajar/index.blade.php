@@ -39,7 +39,6 @@
                                 <th scope="col">Jam Masuk</th>
                                 <th scope="col">Jam Keluar</th>
                                 <th scope="col">Tahun Ajaran</th>
-                                <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,20 +50,9 @@
                                     <td>{{ $item->pegawai->nama }}</td>
                                     <td>{{ $item->jadwal_pelajaran->id_guru_mapel }}</td>
                                     <td>{{ $item->jadwal_pelajaran->id_ruang }}</td>
-                                    <td>{{ $item->jam_masuk}}</td>
-                                    <td>{{ $item->jam_keluar}}</td>
+                                    <td>{{ $item->jam_masuk }}</td>
+                                    <td>{{ $item->jam_keluar }}</td>
                                     <td>{{ $item->tahun_ajaran }}</td>
-                                    <td>
-                                        <form onsubmit="return confirm('Yakin akan dihapus?')"
-                                            action="{{ route('pegawai.absen_mengajar.destroy', $item->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a href="{{ route('pegawai.absen_mengajar.edit', $item->id) }}"
-                                                class="btn btn-sm btn-primary">
-                                                Edit</a>
-                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                        </form>
-                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -81,5 +69,3 @@
         </div>
     </div>
 @endsection
-
-

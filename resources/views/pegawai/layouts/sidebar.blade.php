@@ -58,7 +58,7 @@
      <ul class="menu-inner py-1">
          <!-- Dashboard -->
          <li class="menu-item">
-             <a href="index.html" class="menu-link">
+             <a href="{{ route('pegawai.dashboard') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
                  <div data-i18n="Analytics">Dashboard</div>
              </a>
@@ -71,12 +71,13 @@
              </a>
          </li>
 
+         {{--
          <li class="menu-item">
              <a href="index.html" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
                  <div data-i18n="Analytics">Scan Kehadiran</div>
              </a>
-         </li>
+         </li> --}}
 
          <li class="menu-item {{ request()->routeIs(['pegawai.scan.ruangan*']) ? 'active' : '' }}">
              <a href="{{ route('pegawai.scan.ruangan') }}" class="menu-link">
@@ -86,10 +87,10 @@
          </li>
 
          <li class="menu-item {{ request()->routeIs(['pegawai.absen_mengajar.index.*']) ? 'active' : '' }}">
-            <a href="{{ route('pegawai.absen_mengajar.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Absensi Mengajar</div>
-            </a>
-        </li>
+             <a href="{{ route('pegawai.absen_mengajar.index') }}" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                 <div data-i18n="Analytics">Absensi Mengajar</div>
+             </a>
+         </li>
      </ul>
  </aside>

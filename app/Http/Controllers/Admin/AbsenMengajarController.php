@@ -10,9 +10,8 @@ class AbsenMengajarController extends Controller
 {
     public function index(Request $request)
     {
-        $absen_mengajar = AbsenMengajar::with(['ruang','guru_piket', 'pegawai', 'jadwal_pelajaran'])
-        ->latest()->search($request->search)->paginate(10);
+        $absen_mengajar = AbsenMengajar::with(['ruang', 'guru_piket', 'pegawai', 'jadwal_pelajaran.ruang'])
+            ->latest()->search($request->search)->paginate(10);
         return view('admin.pages.absen_mengajar.index', compact('absen_mengajar'));
     }
-
 }
