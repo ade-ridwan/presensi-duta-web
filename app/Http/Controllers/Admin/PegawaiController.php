@@ -90,7 +90,7 @@ class PegawaiController extends Controller
         $pegawai = pegawai::find($kode_pegawai);
 
         if ($request->file('foto')) {
-            $validated['foto'] = $request->foto->storeAs('public/photo', $request->file('foto')->hashName());
+            $validated['foto'] = $request->file('foto')->storeAs('photo', $request->file('foto')->hashName());
         }
 
         $pegawai->update($validated); // update data ke database
