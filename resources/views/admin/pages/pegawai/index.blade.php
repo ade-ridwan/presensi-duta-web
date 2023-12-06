@@ -49,31 +49,46 @@
                                     <td>{{ $item->nik }}</td>
                                     <td>{{ $item->nuptk }}</td>
                                     <td>{{ $item->nama }}</td>
-                                    <td>@if ($item->jk=='L')Laki-laki
+                                    <td>
+                                        @if ($item->jk == 'L')
+                                            Laki-laki
                                         @endif
-                                        @if ($item->jk=='P')Perempuan
-                                        @endif
-                                    </td>
-                                    <td>@if ($item->jenis_ptk=='ks')Kepala Sekolah
-                                        @endif
-                                        @if ($item->jenis_ptk=='gr')Guru
-                                        @endif
-                                        @if ($item->jenis_ptk=='tu')Tenaga Tata Usaha
-                                        @endif
-                                        @if ($item->jenis_ptk=='st')Petugas Keamanan
+                                        @if ($item->jk == 'P')
+                                            Perempuan
                                         @endif
                                     </td>
-                                    <td>@if ($item->status_pegawai=='gty')GTY/PTY
+                                    <td>
+                                        @if ($item->jenis_ptk == 'ks')
+                                            Kepala Sekolah
                                         @endif
-                                        @if ($item->status_pegawai=='gh')Guru Honorer Sekolah
+                                        @if ($item->jenis_ptk == 'gr')
+                                            Guru
                                         @endif
-                                        @if ($item->status_pegawai=='th')Tenaga Honorer Sekolah
+                                        @if ($item->jenis_ptk == 'tu')
+                                            Tenaga Tata Usaha
+                                        @endif
+                                        @if ($item->jenis_ptk == 'st')
+                                            Petugas Keamanan
                                         @endif
                                     </td>
-                                    <td>{{ $item->foto }}</td>
+                                    <td>
+                                        @if ($item->status_pegawai == 'gty')
+                                            GTY/PTY
+                                        @endif
+                                        @if ($item->status_pegawai == 'gh')
+                                            Guru Honorer Sekolah
+                                        @endif
+                                        @if ($item->status_pegawai == 'th')
+                                            Tenaga Honorer Sekolah
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $item->foto) }}" alt="foto" width="120px">
+                                    </td>
                                     <td>
                                         <form onsubmit="return confirm('Yakin akan dihapus?')"
-                                            action="{{ route('admin.pegawai.destroy', $item->kode_pegawai) }}" method="post">
+                                            action="{{ route('admin.pegawai.destroy', $item->kode_pegawai) }}"
+                                            method="post">
                                             @csrf
                                             @method('DELETE')
                                             <a href="{{ route('admin.pegawai.edit', $item->kode_pegawai) }}"
