@@ -14,6 +14,7 @@
                     <div class="mb-3 d-flex gap-3 justify-content-between">
                         <div>
                             <a href="{{ route('admin.ruang.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                            <a href="{{ route('admin.ruang.print') }}" class="btn btn-sm btn-secondary">Print</a>
                         </div>
                         <div>
                             <div class="input-group input-group-sm">

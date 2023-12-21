@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WaktuAbsensiController;
 use App\Http\Controllers\Admin\WaktuPelajaranController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DisplayController;
 use App\Http\Controllers\Pegawai\AbsenMengajarController as PegawaiAbsenMengajarController;
 use App\Http\Controllers\Pegawai\DashboardController as PegawaiDashboardController;
 use App\Http\Controllers\Pegawai\JadwalPelajaranController as PegawaiJadwalPelajaranController;
@@ -39,15 +40,14 @@ Route::post('/login', [AuthController::class, 'authenticate'])->name('login.auth
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 
-Route::get('display', function () {
-    return view('display');
-});
+Route::get('display', [DisplayController::class, 'index']);
 
 Route::prefix('admin')
     ->name('admin.')
     ->middleware(['auth', 'role:admin'])
     ->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/ruang/print', [RuangController::class, 'print'])->name('ruang.print');
         Route::resource('/ruang', RuangController::class);
         Route::resource('/mapel', MapelController::class);
         Route::resource('/waktu_absensi', WaktuAbsensiController::class);

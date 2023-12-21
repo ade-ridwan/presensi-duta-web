@@ -65,4 +65,10 @@ class RuangController extends Controller
         $ruang->delete();
         return redirect()->route('admin.ruang.index')->with('success', 'Ruang berhasil dihapus');
     }
+
+    public function print()
+    {
+        $ruang = Ruang::get();
+        return view('admin.pages.ruang.print', compact('ruang'));
+    }
 }

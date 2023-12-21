@@ -14,4 +14,14 @@ class AbsenMengajarController extends Controller
             ->latest()->search($request->search)->paginate(10);
         return view('admin.pages.absen_mengajar.index', compact('absen_mengajar'));
     }
+
+    public function destroy($id)
+    {
+        // mengambil data guru_mapel, harus mengahapus terlebih dahulu data child
+        $absen_mengajar = AbsenMengajar::find($id);
+        $absen_mengajar->delete();
+
+        // setelah bersih, bisa mengapus data parentnya
+        return redirect()->route('admin.absen_mengajar.index')->with('success', 'Absen Mengajar berhasil dihapus');
+    }
 }

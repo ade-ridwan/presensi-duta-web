@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="text-center">Scan Ruangan</h3>
-                <div style="width: 100%" id="reader"></div>
+                <div style="width: 100%; height:100%;" id="reader"></div>
             </div>
         </div>
     </div>
@@ -16,10 +16,14 @@
         integrity="sha512-r6rDA7W6ZeQhvl8S7yRVQUKVHdexq+GAlNkNNqVC7YyIV+NwqCTJe2hDWCiffTyRNOeGEzRRJ9ifvRm/HCzGYg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
+        var scan = 1;
+
         function onScanSuccess(decodedText, decodedResult) {
             // Handle on success condition with the decoded text or result.
-            alert(`Scan result: ${decodedText}`, decodedResult);
+            console.log(`Scan result: ${decodedText}`, decodedResult);
             $.ajax({
                 url: '{{ route('pegawai.scan.ruangan.store') }}',
                 method: 'POST',
@@ -29,19 +33,31 @@
                 },
                 success: function(response) {
                     console.log(response);
-                    alert(response.message);
-                    window.location.href = '{{ route('pegawai.dashboard') }}';
+                    Swal.fire({
+                        icon: "success",
+                        title: "Berhasil",
+                        text: response.message,
+                    });
+                    setTimeout(() => {
+                        window.location.href = '{{ route('pegawai.dashboard') }}';
+                    }, 1000);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    alert('gagal');
+                    console.log(jqXHR);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: jqXHR.responseJSON.message,
+                    });
                 }
             });
+
         }
 
         var html5QrcodeScanner = new Html5QrcodeScanner(
             "reader", {
                 fps: 10,
-                qrbox: 150,
+                qrbox: 250,
                 supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
             });
         html5QrcodeScanner.render(onScanSuccess);
